@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Board.css";
 
-const Board = ({ boardId, title, ownersName, cards }) => {
+const Board = ({ boardId, title, owner, cards, HandleChosenBoard }) => {
   return (
     <ol className="boards__item">
-      <button>{title}</button>
+      <button onClick={() => HandleChosenBoard(title)}>{title}</button>
     </ol>
   );
 };
@@ -13,7 +13,9 @@ const Board = ({ boardId, title, ownersName, cards }) => {
 Board.propTypes = {
   boardId: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  ownersName: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  cards: PropTypes.array.isRequired,
+  HandleChosenBoard: PropTypes.func.isRequired,
 };
 
 export default Board;

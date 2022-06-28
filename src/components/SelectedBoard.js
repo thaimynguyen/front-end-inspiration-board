@@ -1,10 +1,11 @@
 import React from "react";
+import { useState } from "react";
 
-const SelectedBoard = ({ chosenBoard }) => {
+const SelectedBoard = ({ HandleChosenBoard }) => {
   return (
     <div>
       <h2>SelectedBoard</h2>
-      <p>{chosenBoard.title}</p>;
+      <p>{HandleChosenBoard}</p>;
     </div>
   );
 };

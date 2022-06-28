@@ -11,8 +11,9 @@ const BoardList = ({ boards }) => {
           key={board.id}
           boardId={board.board_id}
           title={board.title}
-          ownersName={board.owner}
+          owner={board.owner}
           cards={board.card_ids}
+          HandleChosenBoard={board.HandleChosenBoard}
         />
       );
     });
@@ -30,10 +31,11 @@ BoardList.propTypes = {
     PropTypes.shape({
       boardId: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      ownersName: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
       cards: PropTypes.array.isRequired,
     })
   ).isRequired,
+  HandleChosenBoard: PropTypes.func.isRequired
 };
 
 export default BoardList;
