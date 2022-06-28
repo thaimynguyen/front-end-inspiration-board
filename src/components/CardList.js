@@ -1,7 +1,7 @@
 import Card from "./Card";
 import PropTypes from "prop-types";
 
-const Cards = ({ cards, getHeartCount, addHeart, deleteCard }) => {
+const CardList = ({ cards, getHeartCount, addHeart, deleteCard }) => {
   const getCardsJSX = (cards) => {
     return cards.map((card) => {
       return (
@@ -31,4 +31,4 @@ Cards.propTypes = {
   deleteCard: PropTypes.func.isRequired,
 };
 
-export default Cards;
+export default CardList;
