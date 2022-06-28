@@ -5,6 +5,8 @@ import BoardList from "./components/BoardList";
 import SelectedBoard from "./components/SelectedBoard";
 import BoardForm from "./components/BoardForm";
 import CardList from "./components/CardList";
+import NewCardForm from "./components/NewCardForm";
+import CardList from "./components/CardList";
 
 const defaultChosenBoard = "Select a Board from the Board List!";
 
@@ -55,6 +57,7 @@ function App() {
           addHeart={addHeart}
           deleteCard={deleteCard}
         />
+        <NewCardForm />
       </main>
     </div>
   );
