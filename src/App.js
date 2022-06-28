@@ -6,6 +6,7 @@ import BoardList from "./components/BoardList";
 import SelectedBoard from "./components/SelectedBoard";
 import BoardForm from "./components/BoardForm";
 import CardList from "./components/CardList"
+import NewCardForm from "./components/NewCardForm";
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -36,6 +37,7 @@ function App() {
         <SelectedBoard chosenBoard={chosenBoard} />
         <BoardForm />
         <CardList boardId={board_id} getHeartCount={getHeartCount} addHeart={addHeart} deleteCard={deleteCard} />
+        <NewCardForm />
       </main>
     </div>
   );
