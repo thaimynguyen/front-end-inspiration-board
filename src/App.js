@@ -5,13 +5,14 @@ import { useState, useEffect, axios } from "react";
 import BoardList from "./components/BoardList";
 import SelectedBoard from "./components/SelectedBoard";
 import BoardForm from "./components/BoardForm";
+import CardList from "./components/CardList"
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(
     "Select a Board from the Board List!"
   );
-
+  const []
   useEffect(() => {
     getBoardsFromAPI();
   }, []);
@@ -34,6 +35,7 @@ function App() {
         <BoardList boards={boards} />
         <SelectedBoard chosenBoard={chosenBoard} />
         <BoardForm />
+        <CardList boardId={board_id} getHeartCount={getHeartCount} addHeart={addHeart} deleteCard={deleteCard} />
       </main>
     </div>
   );
