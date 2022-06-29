@@ -5,7 +5,7 @@ const SelectedBoard = ({ chosenBoard }) => {
   return (
     <div>
       <h2>SelectedBoard</h2>
-      <p>{chosenBoard}</p>;
+      <p>{chosenBoard}</p>
     </div>
   );
 };

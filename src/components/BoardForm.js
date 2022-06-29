@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const defaultBoard = { Title: "", Owner: "" };
 
-const BoardForm = ({ handleBoardFormSubmission }) => {
+const BoardForm = ({ newBoardSubmission }) => {
   const [boardData, setBoardData] = useState(defaultBoard);
 
   const handleBoardFormInput = (event) => {
@@ -18,7 +18,7 @@ const BoardForm = ({ handleBoardFormSubmission }) => {
 
   const handleBoardFormSubmission = (event) => {
     event.preventDefault();
-    handleBoardFormSubmission(boardData);
+    newBoardSubmission(boardData);
   };
   return (
     <form onSubmit={handleBoardFormSubmission}>
@@ -44,7 +44,7 @@ const BoardForm = ({ handleBoardFormSubmission }) => {
 };
 
 BoardForm.propTypes = {
-  handleBoardFormSubmission: PropTypes.func.isRequired,
+  newBoardSubmission: PropTypes.func.isRequired,
 };
 
 export default BoardForm;

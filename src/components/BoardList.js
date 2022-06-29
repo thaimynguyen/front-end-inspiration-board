@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import "./BoardList.css";
 import Board from "./Board";
 
-const BoardList = ({ boards }) => {
+const BoardList = ({ boards, handleChosenBoardCallback }) => {
   const getBoardListJSX = (boards) => {
     return boards.map((board) => {
       return (
         <Board
-          key={board.id}
+          key={board.board_id}
           boardId={board.board_id}
           title={board.title}
           owner={board.owner}
           cards={board.card_ids}
-          HandleChosenBoard={board.HandleChosenBoard}
+          handleChosenBoardCallback={handleChosenBoardCallback}
         />
       );
     });
@@ -29,13 +29,12 @@ const BoardList = ({ boards }) => {
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
-      boardId: PropTypes.number.isRequired,
+      board_id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
-      cards: PropTypes.array.isRequired,
     })
   ).isRequired,
-  HandleChosenBoard: PropTypes.func.isRequired
+  handleChosenBoardCallback: PropTypes.func.isRequired,
 };
 
 export default BoardList;
