@@ -19,7 +19,7 @@ const CardList = ({ cards, getHeartCount, addHeart, deleteCard }) => {
   return <ul>{getCardsJSX(cards)}</ul>;
 };
 
-Cards.propTypes = {
+CardList.propTypes = {
   cardss: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

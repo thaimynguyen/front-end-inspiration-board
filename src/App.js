@@ -6,7 +6,6 @@ import SelectedBoard from "./components/SelectedBoard";
 import BoardForm from "./components/BoardForm";
 import CardList from "./components/CardList";
 import NewCardForm from "./components/NewCardForm";
-import CardList from "./components/CardList";
 
 const defaultChosenBoard = "Select a Board from the Board List!";
 
@@ -14,8 +13,17 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(defaultChosenBoard);
 
-  const HandleChosenBoard = (title) => {
-    setChosenBoard(title);
+  const HandleChosenBoard = (id) => {
+    getOneBoardDataFromAPI();
+  };
+
+  const getOneBoardDataFromAPI = () => {
+    axios
+      .get("")
+      .then((response) => {
+        setChosenBoard(response.data);
+      })
+      .catch((error) => console.log(`Cannot get the data ${error}`));
   };
 
   useEffect(() => {
@@ -49,8 +57,9 @@ function App() {
       </header>
       <main>
         <BoardList boards={boards} HandleChosenBoard={HandleChosenBoard} />
-        <SelectedBoard HandleChosenBoard={HandleChosenBoard} />
+        <SelectedBoard chosenBoard={chosenBoard} />
         <BoardForm handleBoardFormSubmission={handleBoardFormSubmission} />
+        /*{" "}
         <CardList
           boardId={board_id}
           getHeartCount={getHeartCount}

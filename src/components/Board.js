@@ -5,7 +5,7 @@ import "./Board.css";
 const Board = ({ boardId, title, owner, cards, HandleChosenBoard }) => {
   return (
     <ol className="boards__item">
-      <button onClick={() => HandleChosenBoard(title)}>{title}</button>
+      <button onClick={() => HandleChosenBoard(boardId)}>{title}</button>
     </ol>
   );
 };
