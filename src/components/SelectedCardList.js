@@ -1,29 +1,28 @@
 import Card from "./Card";
 import PropTypes from "prop-types";
 
-const SelectedCardList = ({ boardTitle, cards, deleteCard }) => {
-  const getCardsJSX = (cards) => {
-    return cards.map((card) => (
+const SelectedCardList = ({ boardTitle, cards, deleteCard, addLike }) => {
+  const cardListJSX = cards
+    .sort((a, b) => a.card_id - b.card_id)
+    .map((card) => (
       <Card
         key={card.card_id}
-        boardId={card.board_id}
-        cardId={card.card_id}
-        message={card.message}
-        likeCount={card.likes_count}
+        cardData={card}
         deleteCard={deleteCard}
+        addLike={addLike}
       />
     ));
-  };
+
   return (
     <div>
       <h2>Cards for {boardTitle}</h2>
-      <ul>{getCardsJSX(cards)}</ul>
+      <ul>{cardListJSX}</ul>
     </div>
   );
 };
 
 SelectedCardList.propTypes = {
-  boardId: PropTypes.number.isRequired,
+  boardTitle: PropTypes.string.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       board_id: PropTypes.number.isRequired,
@@ -33,6 +32,7 @@ SelectedCardList.propTypes = {
     })
   ).isRequired,
   deleteCard: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
 };
 
 export default SelectedCardList;

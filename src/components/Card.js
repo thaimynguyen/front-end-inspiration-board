@@ -1,36 +1,27 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
-import axios from "axios";
 
-const Card = ({ boardId, cardId, message, likeCount, deleteCard }) => {
-  const [currentLikeCount, setLikeCount] = useState(likeCount);
-  const increaseLikeCountAPICall = (cardId) => {
-    axios
-      .patch(`https://valt-backend-inpboard.herokuapp.com/cards/${cardId}/like`)
-      .then((response) => {
-        setLikeCount(response.data.likes_count);
-      })
-      .catch((error) => {
-        console.log(
-          `Unable to increase like count of card ${cardId} due to ${error}`
-        );
-      });
-  };
+const Card = ({ cardData, deleteCard, addLike }) => {
   return (
     <li>
-      <p>{message}</p>
-      <span className="heart_count">{currentLikeCount}💕</span>
-      <button onClick={() => increaseLikeCountAPICall(cardId)}>+1</button>
-      <button onClick={() => deleteCard(boardId, cardId)}>Delete</button>
+      <p>{cardData.message}</p>
+      <span className="heart_count">{cardData.likes_count}💕</span>
+      <button onClick={() => addLike(cardData.board_id, cardData.card_id)}>
+        +1
+      </button>
+      <button onClick={() => deleteCard(cardData.board_id, cardData.card_id)}>
+        Delete
+      </button>
     </li>
   );
 };
 
 Card.propTypes = {
-  boardId: PropTypes.number.isRequired,
-  cardId: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
-  likeCount: PropTypes.number.isRequired,
+  cardData: PropTypes.shape({
+    board_id: PropTypes.number.isRequired,
+    card_id: PropTypes.number.isRequired,
+    message: PropTypes.string.isRequired,
+    likes_count: PropTypes.number.isRequired,
+  }),
   deleteCard: PropTypes.func.isRequired,
 };
 

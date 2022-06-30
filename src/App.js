@@ -77,6 +77,18 @@ function App() {
       });
   };
 
+  const increaseLikeCountAPICall = (boardId, cardId) => {
+    axios
+      .patch(`https://valt-backend-inpboard.herokuapp.com/cards/${cardId}/like`)
+      .then(() => {
+        handleChosenBoard(boardId);
+      })
+      .catch((error) => {
+        console.log(
+          `Unable to increase like count of card ${cardId} due to ${error}`
+        );
+      });
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -91,9 +103,10 @@ function App() {
         <BoardForm newBoardSubmission={makeNewBoard} />
         {chosenBoard.title !== defaultChosenBoard.title && (
           <SelectedCardList
-            boardId={chosenBoard.board_id}
+            boardTitle={chosenBoard.title}
             cards={chosenBoard.cards}
             deleteCard={deleteCard}
+            addLike={increaseLikeCountAPICall}
           />
         )}
 
