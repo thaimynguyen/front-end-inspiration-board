@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-const Card = ({ message }) => {
+const Card = ({ boardId, cardId, message, deleteCard }) => {
   return (
     <li>
       <p>{message}</p>
-      {/* <span class="heart_count">{() => getHeartCount(id)}💕</span>
-    <button onClick={() => addHeart(id)}>+1</button>
-    <button onClick={() => deleteCard(id)}>Delete</button> */}
+      {/* <span className="heart_count">💕</span> */}
+      {/* <button onClick={() => addHeart(id)}>+1</button> */}
+      <button onClick={() => deleteCard(boardId, cardId)}>Delete</button>
     </li>
   );
 };

@@ -1,20 +1,20 @@
 import Card from "./Card";
 // import PropTypes from "prop-types";
 
-const SelectedCardList = ({ chosenBoard }) => {
+const SelectedCardList = ({ chosenBoard, deleteCard }) => {
   const cards = chosenBoard.cards;
   // console.log(cards);
   // console.log(cards[0]["message"]);
   const getCardsJSX = (cards) => {
-    console.log(cards);
-    console.log("inGetCardsJSX");
     return cards.map((card) => (
       <Card
         key={card.card_id}
+        boardId={card.board_id}
+        cardId={card.card_id}
         message={card.message}
+        deleteCard={deleteCard}
         // addHeartCount={addHeart}
         // addHeart={addHeart}
-        // deleteCard={deleteCard}
       />
     ));
   };
