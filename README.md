@@ -14,9 +14,9 @@ Team members: Amy Nguyen, Lulu Sun, Taingleap Chheang, Vera Sazonova
 
 ### Checklist
 BOARD
-- [ ] Create a new board by filling out a form 
-- [ ] Display an error message if invalid or incomplete information is provided
-- [ ] Display all boards and ‘select’ a single board 
+- [x] Create a new board by filling out a form 
+- [x] Display an error message if invalid or incomplete information is provided
+- [x] Display all boards and ‘select’ a single board 
 - [ ] Hide form to create boards
 
 CARD
