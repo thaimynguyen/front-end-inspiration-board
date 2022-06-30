@@ -7,12 +7,8 @@ const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
   const [cardData, setCardData] = useState(defaultCard);
 
   const handleFormInput = (event) => {
-    const inputElement = event.target;
-    const name = inputElement.name;
-    const value = inputElement.value;
-
     const newCardData = { ...cardData };
-    newCardData[name] = value;
+    newCardData[event.target.name] = event.target.value;
     setCardData(newCardData);
   };
 
@@ -21,6 +17,7 @@ const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
     handleSubmission(chosenBoardId, cardData);
     setCardData(defaultCard);
   };
+
   return (
     <div>
       <h2>Create a new card</h2>
@@ -31,6 +28,7 @@ const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
           type="text"
           value={cardData.message}
           onChange={handleFormInput}
+          required
         />
         <label htmlFor="preview">Preview</label>
         <input
