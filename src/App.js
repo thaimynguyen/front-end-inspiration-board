@@ -5,10 +5,10 @@ import axios from "axios";
 import BoardList from "./components/BoardList";
 import SelectedBoard from "./components/SelectedBoard";
 import BoardForm from "./components/BoardForm";
-import CardList from "./components/CardList";
+import SelectedCardList from "./components/SelectedCardList";
 import NewCardForm from "./components/NewCardForm";
 
-const defaultChosenBoard = "Select a Board from the Board List!";
+const defaultChosenBoard = { title: "Select a Board from the Board List!" };
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -18,10 +18,13 @@ function App() {
     console.log(boardId);
     console.log("Inside HandleChosenBoard");
     axios
-      .get(`https://valt-backend-inpboard.herokuapp.com/boards/${boardId}`)
+      .get(
+        `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`
+      )
       .then((response) => {
         console.log(response.data);
-        const chosenBoard = `${response.data.title} - ${response.data.owner}`;
+        // const chosenBoard = `${response.data.title} - ${response.data.owner}`;
+        const chosenBoard = response.data;
         setChosenBoard(chosenBoard);
       })
       .catch((error) => console.log(`Cannot get the data ${error}`));
@@ -64,13 +67,15 @@ function App() {
         />
         <SelectedBoard chosenBoard={chosenBoard} />
         <BoardForm newBoardSubmission={makeNewBoard} />
-        {/* <CardList
-          boardId={board_id}
-          getHeartCount={getHeartCount}
-          addHeart={addHeart}
-          deleteCard={deleteCard}
-        />
-        <NewCardForm /> */}
+        {chosenBoard.title !== defaultChosenBoard.title && (
+          <SelectedCardList
+            chosenBoard={chosenBoard}
+            // getHeartCount={getHeartCount}
+            // addHeart={addHeart}
+            // deleteCard={deleteCard}
+          />
+        )}
+        {/* <NewCardForm /> */}
       </main>
     </div>
   );
