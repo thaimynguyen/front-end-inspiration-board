@@ -20,7 +20,7 @@ BOARD
 - [ ] Hide form to create boards
 
 CARD
-- [ ] Create a new card for the selected board by filling out a form 
+- [x] Create a new card for the selected board by filling out a form 
 - [ ] Display an error message if invalid or incomplete information is provided
 - [x] Display all cards of a selected board 
 - [ ] Delete a card 

@@ -15,8 +15,6 @@ function App() {
   const [chosenBoard, setChosenBoard] = useState(defaultChosenBoard);
 
   const handleChosenBoard = (boardId) => {
-    console.log(boardId);
-    console.log("Inside HandleChosenBoard");
     axios
       .get(
         `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`
@@ -31,7 +29,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("Inside the useEffect");
     getBoardsFromAPI();
   }, []);
 
@@ -55,6 +52,31 @@ function App() {
       });
   };
 
+  const makeNewCard = (boardId, data) => {
+    axios
+      .post(
+        `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`,
+        data
+      )
+      .then(() => {
+        handleChosenBoard(boardId);
+      })
+      .catch((error) => {
+        console.log(`Unable to add a new card  ${error}`);
+      });
+  };
+
+  const deleteCard = (boardId, cardId) => {
+    axios
+      .delete(`https://valt-backend-inpboard.herokuapp.com/cards/${cardId}`)
+      .then(() => {
+        handleChosenBoard(boardId);
+      })
+      .catch((error) => {
+        console.log(`Unable to add a new card  ${error}`);
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -75,7 +97,13 @@ function App() {
             // deleteCard={deleteCard}
           />
         )}
-        {/* <NewCardForm /> */}
+
+        {chosenBoard.board_id && (
+          <NewCardForm
+            chosenBoardId={chosenBoard.board_id}
+            handleSubmission={makeNewCard}
+          />
+        )}
       </main>
     </div>
   );

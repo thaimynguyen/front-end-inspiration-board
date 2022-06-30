@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const defaultCard = { message: "" };
 
-const NewCardForm = ({ handleSubmission }) => {
+const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
   const [cardData, setCardData] = useState(defaultCard);
 
   const handleFormInput = (event) => {
@@ -18,26 +18,30 @@ const NewCardForm = ({ handleSubmission }) => {
 
   const handleFormSubmission = (event) => {
     event.preventDefault();
-    handleSubmission(cardData);
+    handleSubmission(chosenBoardId, cardData);
+    setCardData(defaultCard);
   };
   return (
-    <form onSubmit={handleFormSubmission}>
-      <label htmlFor="message">message</label>
-      <input
-        name="message"
-        type="text"
-        value={cardData.message}
-        onChange={handleFormInput}
-      />
-      <label htmlFor="preview">Preview</label>
-      <input
-        name="preview"
-        type="text"
-        value={cardData.message}
-        onChange={handleFormInput}
-      />
-      <input type="submit" value="Submit" />
-    </form>
+    <div>
+      <h2>Create a new card</h2>
+      <form onSubmit={handleFormSubmission}>
+        <label htmlFor="message">Message</label>
+        <input
+          name="message"
+          type="text"
+          value={cardData.message}
+          onChange={handleFormInput}
+        />
+        <label htmlFor="preview">Preview</label>
+        <input
+          name="preview"
+          type="text"
+          value={cardData.message}
+          onChange={handleFormInput}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
   );
 };
 
