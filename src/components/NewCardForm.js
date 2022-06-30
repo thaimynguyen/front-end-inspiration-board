@@ -44,6 +44,7 @@ const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
 };
 
 NewCardForm.propTypes = {
+  chosenBoardId: PropTypes.number.isRequired,
   handleSubmission: PropTypes.func.isRequired,
 };
 
