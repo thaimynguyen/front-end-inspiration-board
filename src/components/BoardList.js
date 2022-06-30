@@ -21,7 +21,7 @@ const BoardList = ({ boards, handleChosenBoardCallback }) => {
   return (
     <div>
       <h2>Boards</h2>
-      <ul>{getBoardListJSX(boards)}</ul>
+      <ol>{getBoardListJSX(boards)}</ol>
     </div>
   );
 };
