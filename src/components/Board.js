@@ -4,11 +4,11 @@ import "./Board.css";
 
 const Board = ({ boardId, title, owner, cards, handleChosenBoardCallback }) => {
   return (
-    <ol className="boards__item">
+    <li className="boards__item">
       <button onClick={() => handleChosenBoardCallback(boardId)}>
         {title}
       </button>
-    </ol>
+    </li>
   );
 };
 

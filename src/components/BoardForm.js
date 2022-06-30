@@ -29,6 +29,7 @@ const BoardForm = ({ newBoardSubmission }) => {
         type="text"
         value={boardData.title}
         onChange={handleBoardFormInput}
+        required
       />
       <label htmlFor="owner">Owner</label>
       <input
@@ -36,6 +37,7 @@ const BoardForm = ({ newBoardSubmission }) => {
         type="text"
         value={boardData.owner}
         onChange={handleBoardFormInput}
+        required
       />
       <label htmlFor="preview">Preview: {boardData.message} </label>
       <input type="submit" value="Submit" />

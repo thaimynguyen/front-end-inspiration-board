@@ -5,30 +5,30 @@ import axios from "axios";
 import BoardList from "./components/BoardList";
 import SelectedBoard from "./components/SelectedBoard";
 import BoardForm from "./components/BoardForm";
-import CardList from "./components/CardList";
+import SelectedCardList from "./components/SelectedCardList";
 import NewCardForm from "./components/NewCardForm";
 
-const defaultChosenBoard = "Select a Board from the Board List!";
+const defaultChosenBoard = { title: "Select a Board from the Board List!" };
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(defaultChosenBoard);
 
   const handleChosenBoard = (boardId) => {
-    console.log(boardId);
-    console.log("Inside HandleChosenBoard");
     axios
-      .get(`https://valt-backend-inpboard.herokuapp.com/boards/${boardId}`)
+      .get(
+        `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`
+      )
       .then((response) => {
         console.log(response.data);
-        const chosenBoard = `${response.data.title} - ${response.data.owner}`;
+        // const chosenBoard = `${response.data.title} - ${response.data.owner}`;
+        const chosenBoard = response.data;
         setChosenBoard(chosenBoard);
       })
       .catch((error) => console.log(`Cannot get the data ${error}`));
   };
 
   useEffect(() => {
-    console.log("Inside the useEffect");
     getBoardsFromAPI();
   }, []);
 
@@ -52,6 +52,43 @@ function App() {
       });
   };
 
+  const makeNewCard = (boardId, data) => {
+    axios
+      .post(
+        `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`,
+        data
+      )
+      .then(() => {
+        handleChosenBoard(boardId);
+      })
+      .catch((error) => {
+        console.log(`Unable to add a new card  ${error}`);
+      });
+  };
+
+  const deleteCard = (boardId, cardId) => {
+    axios
+      .delete(`https://valt-backend-inpboard.herokuapp.com/cards/${cardId}`)
+      .then(() => {
+        handleChosenBoard(boardId);
+      })
+      .catch((error) => {
+        console.log(`Unable to add a new card  ${error}`);
+      });
+  };
+
+  const increaseLikeCountAPICall = (boardId, cardId) => {
+    axios
+      .patch(`https://valt-backend-inpboard.herokuapp.com/cards/${cardId}/like`)
+      .then(() => {
+        handleChosenBoard(boardId);
+      })
+      .catch((error) => {
+        console.log(
+          `Unable to increase like count of card ${cardId} due to ${error}`
+        );
+      });
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -64,13 +101,21 @@ function App() {
         />
         <SelectedBoard chosenBoard={chosenBoard} />
         <BoardForm newBoardSubmission={makeNewBoard} />
-        {/* <CardList
-          boardId={board_id}
-          getHeartCount={getHeartCount}
-          addHeart={addHeart}
-          deleteCard={deleteCard}
-        />
-        <NewCardForm /> */}
+        {chosenBoard.title !== defaultChosenBoard.title && (
+          <SelectedCardList
+            boardTitle={chosenBoard.title}
+            cards={chosenBoard.cards}
+            deleteCard={deleteCard}
+            addLike={increaseLikeCountAPICall}
+          />
+        )}
+
+        {chosenBoard.board_id && (
+          <NewCardForm
+            chosenBoardId={chosenBoard.board_id}
+            handleSubmission={makeNewCard}
+          />
+        )}
       </main>
     </div>
   );

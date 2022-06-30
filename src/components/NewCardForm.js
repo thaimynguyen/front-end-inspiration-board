@@ -3,45 +3,48 @@ import { useState } from "react";
 
 const defaultCard = { message: "" };
 
-const NewCardForm = ({ handleSubmission }) => {
+const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
   const [cardData, setCardData] = useState(defaultCard);
 
   const handleFormInput = (event) => {
-    const inputElement = event.target;
-    const name = inputElement.name;
-    const value = inputElement.value;
-
     const newCardData = { ...cardData };
-    newCardData[name] = value;
+    newCardData[event.target.name] = event.target.value;
     setCardData(newCardData);
   };
 
   const handleFormSubmission = (event) => {
     event.preventDefault();
-    handleSubmission(cardData);
+    handleSubmission(chosenBoardId, cardData);
+    setCardData(defaultCard);
   };
+
   return (
-    <form onSubmit={handleFormSubmission}>
-      <label htmlFor="message">message</label>
-      <input
-        name="message"
-        type="text"
-        value={cardData.message}
-        onChange={handleFormInput}
-      />
-      <label htmlFor="preview">Preview</label>
-      <input
-        name="preview"
-        type="text"
-        value={cardData.message}
-        onChange={handleFormInput}
-      />
-      <input type="submit" value="Submit" />
-    </form>
+    <div>
+      <h2>Create a new card</h2>
+      <form onSubmit={handleFormSubmission}>
+        <label htmlFor="message">Message</label>
+        <input
+          name="message"
+          type="text"
+          value={cardData.message}
+          onChange={handleFormInput}
+          required
+        />
+        <label htmlFor="preview">Preview</label>
+        <input
+          name="preview"
+          type="text"
+          value={cardData.message}
+          onChange={handleFormInput}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
   );
 };
 
 NewCardForm.propTypes = {
+  chosenBoardId: PropTypes.number.isRequired,
   handleSubmission: PropTypes.func.isRequired,
 };
 
