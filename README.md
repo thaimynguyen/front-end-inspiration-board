@@ -24,4 +24,4 @@ CARD
 - [ ] Display an error message if invalid or incomplete information is provided
 - [x] Display all cards of a selected board 
 - [x] Delete a card 
-- [ ] “+1” a card 
+- [x] “+1” a card

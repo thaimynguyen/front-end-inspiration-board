@@ -20,7 +20,7 @@ function App() {
         `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`
       )
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         // const chosenBoard = `${response.data.title} - ${response.data.owner}`;
         const chosenBoard = response.data;
         setChosenBoard(chosenBoard);
@@ -90,7 +90,11 @@ function App() {
         <SelectedBoard chosenBoard={chosenBoard} />
         <BoardForm newBoardSubmission={makeNewBoard} />
         {chosenBoard.title !== defaultChosenBoard.title && (
-          <SelectedCardList chosenBoard={chosenBoard} deleteCard={deleteCard} />
+          <SelectedCardList
+            boardId={chosenBoard.board_id}
+            cards={chosenBoard.cards}
+            deleteCard={deleteCard}
+          />
         )}
 
         {chosenBoard.board_id && (
