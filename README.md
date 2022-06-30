@@ -1,6 +1,6 @@
 # Inspiration Board: Front-end Layer
 
-###Team members: 
+### Team members: 
 - Amy Nguyen
 - Lulu Sun
 - Taingleap Chheang
