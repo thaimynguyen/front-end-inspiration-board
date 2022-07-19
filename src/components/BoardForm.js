@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./BoardForm.css";
 
-const defaultBoard = { Title: "", Owner: "" };
+const defaultBoard = { title: "", owner: "" };
 
-const BoardForm = ({ newBoardSubmission }) => {
+const BoardForm = ({ trigger, setNewBoardFormTrigger, newBoardSubmission }) => {
   const [boardData, setBoardData] = useState(defaultBoard);
 
   const handleBoardFormInput = (event) => {
@@ -19,29 +20,44 @@ const BoardForm = ({ newBoardSubmission }) => {
   const handleBoardFormSubmission = (event) => {
     event.preventDefault();
     newBoardSubmission(boardData);
+    setNewBoardFormTrigger(false);
   };
-  return (
-    <form onSubmit={handleBoardFormSubmission}>
-      <h2>Create A New Board</h2>
-      <label htmlFor="title">Title</label>
-      <input
-        name="title"
-        type="text"
-        value={boardData.title}
-        onChange={handleBoardFormInput}
-        required
-      />
-      <label htmlFor="owner">Owner</label>
-      <input
-        name="owner"
-        type="text"
-        value={boardData.owner}
-        onChange={handleBoardFormInput}
-        required
-      />
-      <label htmlFor="preview">Preview: {boardData.message} </label>
-      <input type="submit" value="Submit" />
-    </form>
+  return trigger ? (
+    <div className="popup-board-form">
+      <form onSubmit={handleBoardFormSubmission} className="board-form">
+        <h2>Create A New Board</h2>
+        <label htmlFor="title">Title</label>
+        <input
+          name="title"
+          type="text"
+          value={boardData.title}
+          onChange={handleBoardFormInput}
+          required
+        />
+        <label htmlFor="owner">Owner</label>
+        <input
+          name="owner"
+          type="text"
+          value={boardData.owner}
+          onChange={handleBoardFormInput}
+          required
+        />
+        <label htmlFor="preview">Preview: {boardData.message} </label>
+        <input
+          name="preview"
+          type="text"
+          value={boardData.title}
+          onChange={handleBoardFormInput}
+        />
+        <br />
+        <input type="submit" value="Submit" className="btn" />
+        <button className="btn" onClick={() => setNewBoardFormTrigger(false)}>
+          Close
+        </button>
+      </form>
+    </div>
+  ) : (
+    ""
   );
 };
 

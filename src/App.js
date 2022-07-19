@@ -5,7 +5,7 @@ import axios from "axios";
 import SideBar from "./components/Sidebar";
 import Main from "./components/Main";
 
-const defaultChosenBoard = { title: "Select a Board from the Board List!" };
+const defaultChosenBoard = { id: null, title: "Please select a board!" };
 
 const App = () => {
   const [boards, setBoards] = useState([]);
@@ -84,6 +84,7 @@ const App = () => {
         );
       });
   };
+
   return (
     <div className="App">
       <main>
@@ -91,18 +92,17 @@ const App = () => {
           boards={boards}
           handleChosenBoardCallback={handleChosenBoard}
           newBoardSubmission={makeNewBoard}
+          chosenBoardId={chosenBoard.id}
         />
-        {chosenBoard["title"] !== defaultChosenBoard["title"] && (
-          <Main
-            chosenBoard={chosenBoard}
-            boardTitle={chosenBoard.title}
-            cards={chosenBoard.cards}
-            deleteCard={deleteCard}
-            addLike={increaseLikeCountAPICall}
-            chosenBoardId={chosenBoard.board_id}
-            handleSubmission={makeNewCard}
-          />
-        )}
+        <Main
+          chosenBoard={chosenBoard}
+          boardTitle={chosenBoard.title}
+          cards={chosenBoard.cards}
+          deleteCard={deleteCard}
+          addLike={increaseLikeCountAPICall}
+          chosenBoardId={chosenBoard.board_id}
+          handleSubmission={makeNewCard}
+        />
       </main>
     </div>
   );

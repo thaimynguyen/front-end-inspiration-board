@@ -1,13 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { MdDelete } from "react-icons/md";
 
-const Board = ({ boardId, title, handleChosenBoardCallback }) => {
+const Board = ({
+  chosenBoardId,
+  boardId,
+  title,
+  handleChosenBoardCallback,
+}) => {
   return (
-    <li className="boards__item">
-      <button onClick={() => handleChosenBoardCallback(boardId)}>
-        {title}
-      </button>
-    </li>
+    <div
+      className={`app-sidebar-board ${
+        boardId === chosenBoardId ? "active" : ""
+      }`}
+      onClick={() => handleChosenBoardCallback(boardId)}
+    >
+      <p>{title}</p>
+      <span className="spacer"></span>
+      <MdDelete className="delete-btn" />
+    </div>
   );
 };
 

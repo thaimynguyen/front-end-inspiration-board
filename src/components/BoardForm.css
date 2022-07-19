@@ -1,0 +1,27 @@
+.popup-board-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    opacity:0.6;
+    
+}
+
+.board-form {
+    position: relative;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.board-form .btn {
+    width: 50%;
+    align-self: center;
+}

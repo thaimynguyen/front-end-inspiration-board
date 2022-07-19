@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
 
-const BoardList = ({ boards, handleChosenBoardCallback }) => {
+const BoardList = ({ boards, handleChosenBoardCallback, chosenBoardId }) => {
   const getBoardListJSX = (boards) => {
     return boards.map((board) => {
       return (
@@ -13,14 +13,14 @@ const BoardList = ({ boards, handleChosenBoardCallback }) => {
           owner={board.owner}
           cards={board.card_ids}
           handleChosenBoardCallback={handleChosenBoardCallback}
+          chosenBoardId={chosenBoardId}
         />
       );
     });
   };
   return (
-    <div>
-      <h2>Inspiration Boards</h2>
-      <ol>{getBoardListJSX(boards)}</ol>
+    <div className="app-sidebar-boards">
+      <div>{getBoardListJSX(boards)}</div>
     </div>
   );
 };

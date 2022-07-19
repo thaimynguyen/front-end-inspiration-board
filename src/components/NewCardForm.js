@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./NewCardForm.css";
 
 const defaultCard = { message: "" };
 
@@ -20,24 +21,17 @@ const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
 
   return (
     <div>
-      <h2>Create a new card</h2>
-      <form onSubmit={handleFormSubmission}>
-        <label htmlFor="message">Message</label>
-        <input
+      <form onSubmit={handleFormSubmission} className="card-form">
+        <textarea
           name="message"
           type="text"
           value={cardData.message}
           onChange={handleFormInput}
+          placeholder="Add a new card..."
           required
+          className="input"
         />
-        <label htmlFor="preview">Preview</label>
-        <input
-          name="preview"
-          type="text"
-          value={cardData.message}
-          onChange={handleFormInput}
-        />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="+" className="btn" />
       </form>
     </div>
   );

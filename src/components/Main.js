@@ -6,16 +6,22 @@ const Main = (props) => {
   return (
     <div className="app-main">
       <SelectedBoard chosenBoard={props.chosenBoard} />
-      <NewCardForm
-        chosenBoardId={props.chosenBoardId}
-        handleSubmission={props.handleSubmission}
-      />
-      <SelectedCardList
-        boardTitle={props.boardTitle}
-        cards={props.cards}
-        deleteCard={props.deleteCard}
-        addLike={props.addLike}
-      />
+
+      {props.chosenBoardId && (
+        <NewCardForm
+          chosenBoardId={props.chosenBoardId}
+          handleSubmission={props.handleSubmission}
+        />
+      )}
+      <br />
+      {props.cards && (
+        <SelectedCardList
+          boardTitle={props.boardTitle}
+          cards={props.cards}
+          deleteCard={props.deleteCard}
+          addLike={props.addLike}
+        />
+      )}
     </div>
   );
 };

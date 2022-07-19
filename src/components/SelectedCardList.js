@@ -1,8 +1,9 @@
 import Card from "./Card";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./Card.css";
 
-const SelectedCardList = ({ boardTitle, cards, deleteCard, addLike }) => {
+const SelectedCardList = ({ cards, deleteCard, addLike }) => {
   const cardListJSXSortById = cards
     .sort((a, b) => a.card_id - b.card_id)
     .map((card) => (
@@ -26,7 +27,7 @@ const SelectedCardList = ({ boardTitle, cards, deleteCard, addLike }) => {
     ));
 
   const cardListJSXSortByNumberofLikes = cards
-    .sort((a, b) => a.likes_count - b.likes_count)
+    .sort((a, b) => b.likes_count - a.likes_count)
     .map((card) => (
       <Card
         key={card.card_id}
@@ -65,20 +66,17 @@ const SelectedCardList = ({ boardTitle, cards, deleteCard, addLike }) => {
   };
   return (
     <div>
-      <h2>Cards for {boardTitle}</h2>
-      <label htmlFor="dropDownOptions">Sort:</label>
       <select id="dropDownOptions" onChange={updateSortOption}>
         <option value="byId">Sort by ID</option>
         <option value="byAlphabetically">Sort alphabetically</option>
-        <option value="byNumber">Sort by number of "+1"s</option>
+        <option value="byNumber">Sort by likes</option>
       </select>
-      <ul>{renderCards()}</ul>
+      <div className=".cards-list">{renderCards()}</div>
     </div>
   );
 };
 
 SelectedCardList.propTypes = {
-  boardTitle: PropTypes.string.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       board_id: PropTypes.number.isRequired,

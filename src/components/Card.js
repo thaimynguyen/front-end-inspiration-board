@@ -1,19 +1,23 @@
 import PropTypes from "prop-types";
 import { MdDelete } from "react-icons/md";
-import { HiOutlineHeart } from "react-icons/hi";
+import "./Card.css";
 
 const Card = ({ cardData, deleteCard, addLike }) => {
   return (
-    <li>
+    <div className="card">
       <p>{cardData.message}</p>
-      <span className="heart_count">{cardData.likes_count}💕</span>
-      <button onClick={() => addLike(cardData.board_id, cardData.card_id)}>
-        <HiOutlineHeart />
-      </button>
-      <button onClick={() => deleteCard(cardData.board_id, cardData.card_id)}>
-        <MdDelete />
-      </button>
-    </li>
+      <div className="card-footer">
+        <div className="like-count">
+          <span> {cardData.likes_count}</span>
+          <span onClick={() => addLike(cardData.board_id, cardData.card_id)}>
+            💕
+          </span>
+        </div>
+        <MdDelete
+          onClick={() => deleteCard(cardData.board_id, cardData.card_id)}
+        />
+      </div>
+    </div>
   );
 };
 
