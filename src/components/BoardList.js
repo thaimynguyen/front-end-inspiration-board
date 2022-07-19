@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
+import "./BoardList.css";
 
 const BoardList = ({
   boards,

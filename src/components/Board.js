@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MdDelete } from "react-icons/md";
+import "./Board.css";
 
 const Board = ({
   chosenBoardId,
@@ -16,9 +17,11 @@ const Board = ({
       }`}
       onClick={() => handleChosenBoardCallback(boardId)}
     >
-      <p>{title}</p>
+      <p className="title-boards">{title}</p>
       <span className="spacer"></span>
-      <MdDelete className="delete-btn" onClick={() => deleteBoard(boardId)} />
+      <div className="delete-button">
+        <MdDelete className="delete-btn" onClick={() => deleteBoard(boardId)} />
+      </div>
     </div>
   );
 };

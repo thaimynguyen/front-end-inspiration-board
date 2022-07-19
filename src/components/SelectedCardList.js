@@ -1,7 +1,7 @@
 import Card from "./Card";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import "./Card.css";
+import "./SelectedCardList.css";
 
 const SelectedCardList = ({ cards, deleteCard, addLike }) => {
   const cardListJSXSortById = cards
@@ -66,7 +66,11 @@ const SelectedCardList = ({ cards, deleteCard, addLike }) => {
   };
   return (
     <div>
-      <select id="dropDownOptions" onChange={updateSortOption}>
+      <select
+        className="selector"
+        id="dropDownOptions"
+        onChange={updateSortOption}
+      >
         <option value="byId">Sort by ID</option>
         <option value="byAlphabetically">Sort alphabetically</option>
         <option value="byNumber">Sort by likes</option>

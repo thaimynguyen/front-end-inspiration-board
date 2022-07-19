@@ -5,14 +5,16 @@
   background: #fff;
   padding: 7px;
   border-radius: 7px;
-  box-shadow: 0 1px 7px rgb(128, 128, 128);
+  /* box-shadow: 0 1px 7px rgb(128, 128, 128); */
+  box-shadow: 0 2px 19px rgba(255, 0, 130, 0.5);
 }
 
 .card-form .input {
+  font-family: 'Reenie Beanie', cursive;
   width: 100%;
   border: none;
   margin-bottom: 20px;
-  font-size: 1rem;
+  font-size: 2rem;
   resize: none;
 }
 
@@ -23,8 +25,9 @@
   align-items: center;
   right: 18px;
   bottom: -18px;
-  background: rgb(255, 200, 18);
-  color: #fff;
+  font-size: 1.6rem;
+  color:rgb(252, 140, 200);
+  background: rgb(0, 0, 0);
   border: none;
   border-radius: 50%;
   width: 36px;
