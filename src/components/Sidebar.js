@@ -19,6 +19,7 @@ const SideBar = (props) => {
         boards={props.boards}
         handleChosenBoardCallback={props.handleChosenBoardCallback}
         chosenBoardId={props.chosenBoardId}
+        deleteBoard={props.deleteBoard}
       />
     </div>
   );

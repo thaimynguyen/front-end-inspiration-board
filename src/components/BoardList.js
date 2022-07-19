@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
 
-const BoardList = ({ boards, handleChosenBoardCallback, chosenBoardId }) => {
+const BoardList = ({
+  boards,
+  handleChosenBoardCallback,
+  chosenBoardId,
+  deleteBoard,
+}) => {
   const getBoardListJSX = (boards) => {
     return boards.map((board) => {
       return (
@@ -14,6 +19,7 @@ const BoardList = ({ boards, handleChosenBoardCallback, chosenBoardId }) => {
           cards={board.card_ids}
           handleChosenBoardCallback={handleChosenBoardCallback}
           chosenBoardId={chosenBoardId}
+          deleteBoard={deleteBoard}
         />
       );
     });

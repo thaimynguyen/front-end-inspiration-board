@@ -7,6 +7,7 @@ const Board = ({
   boardId,
   title,
   handleChosenBoardCallback,
+  deleteBoard,
 }) => {
   return (
     <div
@@ -17,7 +18,7 @@ const Board = ({
     >
       <p>{title}</p>
       <span className="spacer"></span>
-      <MdDelete className="delete-btn" />
+      <MdDelete className="delete-btn" onClick={() => deleteBoard(boardId)} />
     </div>
   );
 };

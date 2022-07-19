@@ -47,6 +47,18 @@ const App = () => {
       });
   };
 
+  const deleteBoard = (boardId) => {
+    // TO COMPLETE
+    axios
+      .delete(``)
+      .then(() => {
+        getBoardsFromAPI();
+      })
+      .catch((error) => {
+        console.log(`Unable to delete a card  ${error}`);
+      });
+  };
+
   const makeNewCard = (boardId, data) => {
     axios
       .post(
@@ -68,7 +80,7 @@ const App = () => {
         handleChosenBoard(boardId);
       })
       .catch((error) => {
-        console.log(`Unable to add a new card  ${error}`);
+        console.log(`Unable to delete a card  ${error}`);
       });
   };
 
@@ -93,6 +105,7 @@ const App = () => {
           handleChosenBoardCallback={handleChosenBoard}
           newBoardSubmission={makeNewBoard}
           chosenBoardId={chosenBoard.id}
+          deleteBoard={deleteBoard}
         />
         <Main
           chosenBoard={chosenBoard}
