@@ -50,7 +50,7 @@ const App = () => {
   const deleteBoard = (boardId) => {
     // TO COMPLETE
     axios
-      .delete(``)
+      .delete(`https://valt-backend-inpboard.herokuapp.com/boards/${boardId}`)
       .then(() => {
         getBoardsFromAPI();
       })
