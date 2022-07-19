@@ -36,29 +36,43 @@ const SelectedCardList = ({ boardTitle, cards, deleteCard, addLike }) => {
       />
     ));
 
-  const [cardListData, setCardListData] = useState(cardListJSXSortById);
+  // const [cardListData, setCardListData] = useState(cardListJSXSortById);
 
-  const updateCardListData = () => {
-    const select = document.getElementById("dropDownOptions");
-    if (select.value === "byId") {
-      setCardListData(cardListJSXSortById);
-    } else if (select.value === "byAlphabetically") {
-      setCardListData(cardListJSXSortByAlphabetically);
-    } else if (select.value === "byNumber") {
-      setCardListData(cardListJSXSortByNumberofLikes);
+  // const updateCardListData = () => {
+  //   const select = document.getElementById("dropDownOptions");
+  //   if (select.value === "byId") {
+  //     setCardListData(cardListJSXSortById);
+  //   } else if (select.value === "byAlphabetically") {
+  //     setCardListData(cardListJSXSortByAlphabetically);
+  //   } else if (select.value === "byNumber") {
+  //     setCardListData(cardListJSXSortByNumberofLikes);
+  //   }
+  // };
+
+  const [sortOption, setSortOption] = useState("byId");
+  const updateSortOption = () => {
+    const selectElement = document.getElementById("dropDownOptions");
+    setSortOption(selectElement.value);
+  };
+  const renderCards = () => {
+    if (sortOption === "byId") {
+      return cardListJSXSortById;
+    } else if (sortOption === "byAlphabetically") {
+      return cardListJSXSortByAlphabetically;
+    } else if (sortOption === "byNumber") {
+      return cardListJSXSortByNumberofLikes;
     }
   };
-
   return (
     <div>
       <h2>Cards for {boardTitle}</h2>
-      <label for="sorts">Sort:</label>
-      <select id="dropDownOptions" onChange={updateCardListData}>
+      <label htmlFor="dropDownOptions">Sort:</label>
+      <select id="dropDownOptions" onChange={updateSortOption}>
         <option value="byId">Sort by ID</option>
         <option value="byAlphabetically">Sort alphabetically</option>
         <option value="byNumber">Sort by number of "+1"s</option>
       </select>
-      <ul>{cardListData}</ul>
+      <ul>{renderCards()}</ul>
     </div>
   );
 };
