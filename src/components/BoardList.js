@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./BoardList.css";
 import Board from "./Board";
 
 const BoardList = ({ boards, handleChosenBoardCallback }) => {
@@ -20,7 +19,7 @@ const BoardList = ({ boards, handleChosenBoardCallback }) => {
   };
   return (
     <div>
-      <h2>Boards</h2>
+      <h2>Inspiration Boards</h2>
       <ol>{getBoardListJSX(boards)}</ol>
     </div>
   );

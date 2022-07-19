@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Board.css";
 
 const Board = ({ boardId, title, handleChosenBoardCallback }) => {
   return (
