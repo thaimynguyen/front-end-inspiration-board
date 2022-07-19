@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { MdDelete } from "react-icons/md";
+import { HiOutlineHeart } from "react-icons/hi";
 
 const Card = ({ cardData, deleteCard, addLike }) => {
   return (
@@ -6,10 +8,10 @@ const Card = ({ cardData, deleteCard, addLike }) => {
       <p>{cardData.message}</p>
       <span className="heart_count">{cardData.likes_count}💕</span>
       <button onClick={() => addLike(cardData.board_id, cardData.card_id)}>
-        +1
+        <HiOutlineHeart />
       </button>
       <button onClick={() => deleteCard(cardData.board_id, cardData.card_id)}>
-        Delete
+        <MdDelete />
       </button>
     </li>
   );

@@ -2,15 +2,12 @@ import "./App.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import BoardList from "./components/BoardList";
-import SelectedBoard from "./components/SelectedBoard";
-import BoardForm from "./components/BoardForm";
-import SelectedCardList from "./components/SelectedCardList";
-import NewCardForm from "./components/NewCardForm";
+import SideBar from "./components/Sidebar";
+import Main from "./components/Main";
 
 const defaultChosenBoard = { title: "Select a Board from the Board List!" };
 
-function App() {
+const App = () => {
   const [boards, setBoards] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(defaultChosenBoard);
 
@@ -20,8 +17,6 @@ function App() {
         `https://valt-backend-inpboard.herokuapp.com/boards/${boardId}/cards`
       )
       .then((response) => {
-        console.log(response.data);
-        // const chosenBoard = `${response.data.title} - ${response.data.owner}`;
         const chosenBoard = response.data;
         setChosenBoard(chosenBoard);
       })
@@ -91,27 +86,19 @@ function App() {
   };
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Inspiration Board</h1>
-      </header>
       <main>
-        <BoardList
+        <SideBar
           boards={boards}
           handleChosenBoardCallback={handleChosenBoard}
+          newBoardSubmission={makeNewBoard}
         />
-        <SelectedBoard chosenBoard={chosenBoard} />
-        <BoardForm newBoardSubmission={makeNewBoard} />
-        {chosenBoard.title !== defaultChosenBoard.title && (
-          <SelectedCardList
+        {chosenBoard["title"] !== defaultChosenBoard["title"] && (
+          <Main
+            chosenBoard={chosenBoard}
             boardTitle={chosenBoard.title}
             cards={chosenBoard.cards}
             deleteCard={deleteCard}
             addLike={increaseLikeCountAPICall}
-          />
-        )}
-
-        {chosenBoard.board_id && (
-          <NewCardForm
             chosenBoardId={chosenBoard.board_id}
             handleSubmission={makeNewCard}
           />
@@ -119,6 +106,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

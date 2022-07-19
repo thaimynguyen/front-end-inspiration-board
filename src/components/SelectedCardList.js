@@ -52,7 +52,7 @@ const SelectedCardList = ({ boardTitle, cards, deleteCard, addLike }) => {
   return (
     <div>
       <h2>Cards for {boardTitle}</h2>
-      <label for="sorts">Sort:</label>
+      <label htmlFor="sorts">Sort:</label>
       <select id="dropDownOptions" onChange={updateCardListData}>
         <option value="byId">Sort by ID</option>
         <option value="byAlphabetically">Sort alphabetically</option>
