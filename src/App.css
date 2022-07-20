@@ -54,11 +54,9 @@ main {
 }
 
 .app-main {
-  margin: 10px;
+  margin: 0px 10px;
   width: 80%;
   height: 100vh;
   text-align: center;
-  align-items: center;
-  justify-content: center;
   overflow-y: scroll;
 }
