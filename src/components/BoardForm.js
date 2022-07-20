@@ -21,12 +21,17 @@ const BoardForm = ({ trigger, setNewBoardFormTrigger, newBoardSubmission }) => {
     event.preventDefault();
     newBoardSubmission(boardData);
     setNewBoardFormTrigger(false);
+    event.target.reset();
   };
   return trigger ? (
     <div className="popup-board-form">
-      <form onSubmit={handleBoardFormSubmission} className="board-form">
-        <h2>Create A New Board</h2>
-        <label htmlFor="title">Title</label>
+      <form
+        onSubmit={handleBoardFormSubmission}
+        className="board-form"
+        id="new-board-form"
+      >
+        <h2>Add A New Board</h2>
+        <label htmlFor="title">Title:</label>
         <input
           name="title"
           type="text"
@@ -34,7 +39,7 @@ const BoardForm = ({ trigger, setNewBoardFormTrigger, newBoardSubmission }) => {
           onChange={handleBoardFormInput}
           required
         />
-        <label htmlFor="owner">Owner</label>
+        <label htmlFor="owner">Owner:</label>
         <input
           name="owner"
           type="text"
@@ -42,7 +47,7 @@ const BoardForm = ({ trigger, setNewBoardFormTrigger, newBoardSubmission }) => {
           onChange={handleBoardFormInput}
           required
         />
-        <label htmlFor="preview">Preview: {boardData.message} </label>
+        <label htmlFor="preview">Preview:</label>
         <input
           name="preview"
           type="text"

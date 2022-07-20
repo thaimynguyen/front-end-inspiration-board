@@ -71,9 +71,9 @@ const SelectedCardList = ({ cards, deleteCard, addLike }) => {
         id="dropDownOptions"
         onChange={updateSortOption}
       >
-        <option value="byId">Sort by ID</option>
-        <option value="byAlphabetically">Sort alphabetically</option>
-        <option value="byNumber">Sort by likes</option>
+        <option value="byId">Sorted by ID</option>
+        <option value="byAlphabetically">Sorted alphabetically</option>
+        <option value="byNumber">Sorted by likes</option>
       </select>
       <div className=".cards-list">{renderCards()}</div>
     </div>

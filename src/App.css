@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Edu+TAS+Beginner&family=Permanent+Marker&family=Reenie+Beanie&display=swap');
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
 
 body,
 .App {
@@ -14,11 +22,12 @@ main {
   justify-content: space-between;
 }
 
+
+
 .app-sidebar {
   width: 25%;
-  height: 100vh;
-  border-right: 1px solid #ddd;
-  margin: 10px;
+  border-right: 2px solid black;
+  margin: 0px 10px;
 }
 
 .app-sidebar-boards {
@@ -28,6 +37,8 @@ main {
 .app-sidebar-board {
   display: flex;
   align-items: center;
+  font-size: 20px;
+  font-family: 'Bradley Hand', cursive;
 }
 
 .app-sidebar-board .spacer{
@@ -35,11 +46,11 @@ main {
 }
 
 .app-sidebar-board:hover {
-  background: #ddd;
+    background-color: rgb(250, 218, 221);
 }
 
 .app-sidebar-board.active{
-  background-color: aquamarine;
+  background-color: rgb(252, 140, 200);
 }
 
 .app-main {
@@ -47,4 +58,5 @@ main {
   width: 80%;
   height: 100vh;
   text-align: center;
+  overflow-y: scroll;
 }

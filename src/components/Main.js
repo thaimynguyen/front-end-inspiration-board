@@ -6,14 +6,12 @@ const Main = (props) => {
   return (
     <div className="app-main">
       <SelectedBoard chosenBoard={props.chosenBoard} />
-
       {props.chosenBoardId && (
         <NewCardForm
           chosenBoardId={props.chosenBoardId}
           handleSubmission={props.handleSubmission}
         />
       )}
-      <br />
       {props.cards && (
         <SelectedCardList
           boardTitle={props.boardTitle}

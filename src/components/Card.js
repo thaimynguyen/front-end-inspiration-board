@@ -5,7 +5,7 @@ import "./Card.css";
 const Card = ({ cardData, deleteCard, addLike }) => {
   return (
     <div className="card">
-      <p className="card-message">{cardData.message}</p>
+      <div className="card-message">{cardData.message}</div>
       <div className="card-footer">
         <div className="like-count">
           <span> {cardData.likes_count}</span>

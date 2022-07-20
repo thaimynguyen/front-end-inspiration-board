@@ -1,11 +1,10 @@
 .card-form {
   position: relative;
-  width: 600px;
-  margin: 32px auto 50px auto;
+  width: 50%;
+  margin: 20px auto;
   background: #fff;
   padding: 7px;
   border-radius: 7px;
-  /* box-shadow: 0 1px 7px rgb(128, 128, 128); */
   box-shadow: 0 2px 19px rgba(255, 0, 130, 0.5);
 }
 
@@ -14,8 +13,8 @@
   width: 100%;
   border: none;
   margin-bottom: 20px;
-  font-size: 2rem;
-  resize: none;
+  font-size: 1.5rem;
+
 }
 
 .card-form .btn {

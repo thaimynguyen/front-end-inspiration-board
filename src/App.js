@@ -5,7 +5,7 @@ import axios from "axios";
 import SideBar from "./components/Sidebar";
 import Main from "./components/Main";
 
-const defaultChosenBoard = { id: null, title: "Please select a board!" };
+const defaultChosenBoard = { board_id: null, title: "Please select a board!" };
 
 const App = () => {
   const [boards, setBoards] = useState([]);
@@ -104,7 +104,7 @@ const App = () => {
           boards={boards}
           handleChosenBoardCallback={handleChosenBoard}
           newBoardSubmission={makeNewBoard}
-          chosenBoardId={chosenBoard.id}
+          chosenBoardId={chosenBoard.board_id}
           deleteBoard={deleteBoard}
         />
         <Main
