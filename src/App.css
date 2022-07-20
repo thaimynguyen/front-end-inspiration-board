@@ -58,5 +58,7 @@ main {
   width: 80%;
   height: 100vh;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   overflow-y: scroll;
 }

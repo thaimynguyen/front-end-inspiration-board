@@ -20,8 +20,8 @@ const BoardForm = ({ trigger, setNewBoardFormTrigger, newBoardSubmission }) => {
   const handleBoardFormSubmission = (event) => {
     event.preventDefault();
     newBoardSubmission(boardData);
+    setBoardData(defaultBoard);
     setNewBoardFormTrigger(false);
-    event.target.reset();
   };
   return trigger ? (
     <div className="popup-board-form">

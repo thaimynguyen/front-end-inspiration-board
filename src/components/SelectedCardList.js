@@ -75,7 +75,7 @@ const SelectedCardList = ({ cards, deleteCard, addLike }) => {
         <option value="byAlphabetically">Sorted alphabetically</option>
         <option value="byNumber">Sorted by likes</option>
       </select>
-      <div className=".cards-list">{renderCards()}</div>
+      <div className="cards-list">{renderCards()}</div>
     </div>
   );
 };
