@@ -27,7 +27,7 @@ const NewCardForm = ({ chosenBoardId, handleSubmission }) => {
           type="text"
           value={cardData.message}
           onChange={handleFormInput}
-          placeholder="Add a new card..."
+          placeholder="Add a message (no more than 40 characters)"
           required
           className="input"
         />

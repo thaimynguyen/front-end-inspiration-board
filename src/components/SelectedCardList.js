@@ -37,19 +37,6 @@ const SelectedCardList = ({ cards, deleteCard, addLike }) => {
       />
     ));
 
-  // const [cardListData, setCardListData] = useState(cardListJSXSortById);
-
-  // const updateCardListData = () => {
-  //   const select = document.getElementById("dropDownOptions");
-  //   if (select.value === "byId") {
-  //     setCardListData(cardListJSXSortById);
-  //   } else if (select.value === "byAlphabetically") {
-  //     setCardListData(cardListJSXSortByAlphabetically);
-  //   } else if (select.value === "byNumber") {
-  //     setCardListData(cardListJSXSortByNumberofLikes);
-  //   }
-  // };
-
   const [sortOption, setSortOption] = useState("byId");
   const updateSortOption = () => {
     const selectElement = document.getElementById("dropDownOptions");
